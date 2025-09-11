@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T Shirt</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .image-container {
+            max-width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .responsive-image {
+            max-width: 500px;
+            max-height: 800px;
+            height: auto;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .paypal-container {
+            margin: 0 auto;
+            width: fit-content;
+        }
+        .centered-content {
+            margin: 0 auto;
+            width: fit-content;
+            max-width: 500px;
+        }
+        
+        /* Optional: Set a maximum width to prevent it from getting too large on very wide screens */
+        @media (min-width: 1200px) {
+            .responsive-image {
+                max-width: 1000px;
+            }
+        }
+        
+        /* Ensure good display on mobile */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+        }
+
+        .countdown-container {
+            position: fixed;
+            text-align:center;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .red-text {
+    color: red;
+  }
+
+  .pp-UUQR2HM7578LW{
+            text-align:center;
+            border:none;
+            border-radius:0.25rem;
+            min-width:11.625rem;
+            padding:0 2rem;
+            height:2.625rem;
+            font-weight:bold;
+            background-color:#FFD140;
+            color:#000000;
+            font-family:"Helvetica Neue",Arial,sans-serif;
+            font-size:1rem;
+            line-height:1.25rem;
+            cursor:pointer;
+        }
+        .shipping-dropdown {
+            padding:0.5rem;
+            border:1px solid #ccc;
+            border-radius:0.25rem;
+            font-size:1rem;
+            margin-bottom:1rem;
+            background-color:white;
+            cursor:pointer;
+        }
+
+        /* Expired message styles */
+        .expired-message {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            color: #6c757d;
+        }
+    </style>
+
+
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAANmV4digaWMYi_B5Nkovha6AaZMYkTZFQDK62qPQSMuoSt8Z0RqgoA39D9W6Np8GUEuD2J_MfgF3Nkic&components=hosted-buttons&enable-funding=venmo&currency=USD">
+</script>
+
+</head>
+
+
+<body>
+    <!-- t shirt image -->
+    <div class="image-container">
+        <img src="north_of_god_south_of_dallas_blank.png" alt="Example Image" class="responsive-image">
+    </div>
+
+<div class="centered-content"><p><strong>All shirts are size XL</strong></p></div>
+<div class="centered-content"><p><strong>Limited Print Run</strong> - taking orders for 2 weeks then printing only the amount ordered. This reduces waste and keeps the price low. I am selling everything at cost just doing this for fun.</p></div>
+
+
+<!-- paypal button -->
+<!-- <div class="paypal-container"> 
+    <style>.pp-UUQR2HM7578LW{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+    <form action="https://www.paypal.com/ncp/payment/UUQR2HM7578LW" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+    <input class="pp-UUQR2HM7578LW" type="submit" value="Buy Now" />
+    <img src=https://www.paypalobjects.com/images/Debit_Credit_APM.svg alt="cards" />
+    <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+    </form>   
+</div> -->
+
+<!-- pickup id = T2KSTFK88G39A -->
+ <!-- shipping id = UUQR2HM7578LW -->
+
+<div class="paypal-container" id="paypalButtonContainer">        
+
+    <!-- Shipping Selection -->
+    <div style="text-align:center;margin-bottom:1rem;">
+        <label for="shippingOption" style="display:block;margin-bottom:0.5rem;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:bold;">Choose Shipping Option:</label>
+        <span style="font-size: 14px;">*Local pickup only for Austin area</span>
+        <br />
+        <select id="shippingOption" class="shipping-dropdown">
+            <option value="shipping">Standard Domestic Shipping</option>
+            <option value="pickup">Local Pickup</option>
+        </select>
+    </div>
+
+    <!-- Single Buy Now Button -->
+    <div style="text-align:center;margin-bottom:1rem;">
+        <button class="pp-UUQR2HM7578LW" onclick="handlePurchase()">Buy Now</button>
+    </div>
+
+    <!-- Centered PayPal branding -->
+    <div style="text-align:center;">
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />     
+        <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>     
+    </div>
+
+    <!-- Hidden forms for each option -->
+    <form id="shippingForm" action="https://www.paypal.com/ncp/payment/UUQR2HM7578LW" method="post" target="_blank" style="display:none;">
+    </form>
+    
+    <form id="pickupForm" action="https://www.paypal.com/ncp/payment/T2KSTFK88G39A" method="post" target="_blank" style="display:none;">
+    </form>
+
+</div>
+
+ <!-- Expired message (hidden by default) -->
+    <div id="expiredMessage" class="expired-message" style="display:none;">
+        <h3>No Longer Selling</h3>
+        <p>The made to order time purchase window has ended. Thank you for your interest!</p>
+    </div>
+   
+
+<div class="countdown-container">
+        <div id="countdown" class="red-text">
+            <div>Order Window Closes In</div>
+            <span id="days">00</span>:<span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+            <br />
+            <span>D:Hr:Min:Sec</span>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        // Set specific end date and time (CHANGE THIS TO YOUR DESIRED DATE)
+        // Format: "Month Day, Year Hour:Minute:Second"
+        const countdownDate = new Date("September 11, 2025 13:35:00").getTime();
+
+        // Function to check if countdown has expired and hide/show button
+        function checkCountdownStatus() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const paypalContainer = document.getElementById('paypalButtonContainer');
+            const expiredMessage = document.getElementById('expiredMessage');
+
+            if (distance < 0) {
+                // Countdown expired - hide button, show expired message
+                paypalContainer.style.display = 'none';
+                expiredMessage.style.display = 'block';
+                return false; // Countdown expired
+            } else {
+                // Countdown still active - show button, hide expired message
+                paypalContainer.style.display = 'block';
+                expiredMessage.style.display = 'none';
+                return true; // Countdown active
+            }
+        }
+
+        // Update the countdown every second
+        const countdownTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // Check if expired FIRST, before calculating time units
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+                checkCountdownStatus(); // This will hide the button
+                return; // Exit the function, don't calculate negative time
+            }
+
+            // Only calculate time units if NOT expired
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Format with leading zeros
+            document.getElementById("days").textContent = String(days).padStart(2, '0');
+            document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+
+            // Also check button status every second
+            checkCountdownStatus();
+        }, 1000);
+
+        // Check status immediately when page loads
+        checkCountdownStatus();
+
+        function handlePurchase() {
+            const shippingOption = document.getElementById('shippingOption').value;
+            
+            if (shippingOption === 'pickup') {
+                // Submit the pickup form
+                document.getElementById('pickupForm').submit();
+            } else {
+                // Default to shipping form
+                document.getElementById('shippingForm').submit();
+            }
+        }
+    </script>
+         
+</body>
+</html>
