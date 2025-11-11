@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +7,22 @@
     <style>
         body {
             text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+        .pdf-container {
+            width: 100%;
+            height: 90vh;
+            max-width: 816px;
+            margin: 0 auto;
         }
     </style>
 </head>
-
 <body>
-
-<!-- <h1>This is me testing my webpage</h1>
-<p>Live updates get pushed through Live Server extension</p> -->
-
-<!-- <iframe src="Example_pdf.pdf" width="100%" height="600px" style="border: none;"></iframe> -->
-<div style="margin: 0 auto; padding: 0; line-height: 0; width: 816px; height: 2112px; max-width: 100%;">
-    <iframe src="ETHIKA_UNDERWEAR_IS_TOO_LONG.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
-            width="100%" 
-            height="100%"
-            frameborder="0"
-            style="border: none; margin: 0; padding: 0; display: block;">
-    </iframe>
-</div>
-
-
+    <div class="pdf-container">
+        <object data="ETHIKA_UNDERWEAR_IS_TOO_LONG.pdf" type="application/pdf" width="100%" height="100%">
+            <p>Your browser doesn't support PDFs. <a href="ETHIKA_UNDERWEAR_IS_TOO_LONG.pdf">Download the PDF</a> instead.</p>
+        </object>
+    </div>
 </body>
 </html>
